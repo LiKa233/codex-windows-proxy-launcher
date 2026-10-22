@@ -1,0 +1,7 @@
+dist/
+launcher.config.json
+*.log
+*.previous
+*.local.json
+.DS_Store
+Thumbs.db
