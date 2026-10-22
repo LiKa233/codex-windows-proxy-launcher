@@ -1,0 +1,2 @@
+# Preserve exact UTF-8 bytes: payload hashes and EXE resources depend on them.
+* -text
