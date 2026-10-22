@@ -1,0 +1,27 @@
+name: Windows checks and candidate build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test Windows PowerShell core
+        shell: powershell
+        run: ./tests/Run-Tests.ps1
+      - name: Build EXE, ZIP and checksums
+        shell: powershell
+        run: ./build.ps1
+      - name: Upload candidate artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: codex-proxy-launcher-windows-x64
+          path: |
+            dist/*.exe
+            dist/*.zip
+            dist/SHA256SUMS.txt
+            tests/test-results.local.json
