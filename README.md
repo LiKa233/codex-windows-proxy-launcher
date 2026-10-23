@@ -1,12 +1,12 @@
 # Codex Windows Proxy Launcher
 
-2026-10-23 补充：用户已通过桌面旧启动器运行新版 `26.1013.4894.0`，系统代理关闭、TUN 由用户确认关闭；进程仍带有旧版 `<-loopback>` 参数。新 EXE/脚本冷启动继续待验。详见[重启观察](VALIDATION.md)。
+2026-10-23 更新：新 EXE 首次端口配置及 MSIX `26.1013.4894.0` 冷启动已通过；系统代理关闭、TUN 由用户确认关闭。新进程无 `<-loopback>` 参数，账号/工作区、本地工具、内置浏览器外网及 IPv4 本地预览已完成基础验证。完整功能和脚本独立冷启动仍待验。详见[最新验收记录](VALIDATION.md)。
 
 为 Windows 微软商店版 `OpenAI.Codex` 提供应用级代理启动入口：Clash 在后台监听本机 HTTP/Mixed 端口时，无需通过本启动器开启 Windows 系统代理或 TUN。
 
-**当前为 `1.0.0-rc.1` 候选版。新版客户端的冷启动和完整功能验收尚未完成。** 请先看 [验证记录](VALIDATION.md)，不要把“文件已构建”“代理握手成功”理解为“所有功能已经通过测试”。
+**当前为 `1.0.0-rc.1` 候选版。新 EXE 已完成该客户端版本的基础冷启动验收；脚本独立冷启动和完整功能验收尚未完成。** 请先看 [验证记录](VALIDATION.md)，不要把“文件已构建”“代理握手成功”理解为“所有功能已经通过测试”。
 
-English: An open-source, per-process proxy launcher for the Microsoft Store `OpenAI.Codex` desktop client on Windows. Includes editable scripts and a portable GUI EXE built from the same PowerShell core. You provide your own local HTTP/Mixed proxy port. Client cold-start and feature acceptance remain explicitly pending in this release candidate.
+English: An open-source, per-process proxy launcher for the Microsoft Store `OpenAI.Codex` desktop client on Windows. Includes editable scripts and a portable GUI EXE built from the same PowerShell core. You provide your own local HTTP/Mixed proxy port. The EXE passed basic acceptance on MSIX 26.1013.4894.0. Independent script cold-start and full feature coverage remain pending in this release candidate.
 
 - [下载候选发行包](https://github.com/LiKa233/codex-windows-proxy-launcher/releases)
 - [配套 Codex skill](https://github.com/LiKa233/codex-windows-proxy-skill)
@@ -30,9 +30,9 @@ English: An open-source, per-process proxy launcher for the Microsoft Store `Ope
 
 | 组件 | 本次观察值 | 状态 |
 |---|---|---|
-| 已注册 MSIX 包 | `26.1013.4894.0` | 注册信息、清单和可执行路径已检查；冷启动待验 |
+| 已注册 MSIX 包 | `26.1013.4894.0` | 注册信息与路径已检查；10 月 23 日新 EXE 基础冷启动通过 |
 | 该包内应用 package.json | `26.1013.40934` | 只读提取的应用版本，不能与 MSIX 版本混用 |
-| 该包内 CLI | `0.163.0-alpha.10.2` | 版本命令已读取；不代表当前运行后台已使用它 |
+| 该包内 CLI | `0.163.0-alpha.10.2` | 10 月 23 日运行后台路径对应此 CLI 版本 |
 | 2026-10-22 运行的旧 MSIX | `26.1007.9446.0` | 观察到原启动器的代理参数和后台到代理的连接；非新版验证 |
 | 2026-10-22 旧后台 CLI | `0.162.0-alpha.17.2` | 当前运行路径对应的版本 |
 
